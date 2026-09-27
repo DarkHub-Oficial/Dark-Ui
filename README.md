@@ -1,45 +1,47 @@
-# Dark Library Ui / Black Hub
+# 🌑 Dark Ui V3
 
-A modern Roblox UI library with progressive rendering, customizable theme, and a full set of controls.
-
----
-
-## Features
-
-- Progressive loading (`Rendering`)
-- Enable / disable tabs from a simple table
-- Custom floating open/close button with circular logo
-- Notifications
-- Search (global + per page)
-- Draggable main window and floating button
-- Clean dark theme (white accents)
+Modern Roblox UI library — dark theme, white accents, progressive optional loading, and Proxy-compatible controls (`:Set`, `:SetDescription`).
 
 ---
 
-## Installation
+## ✨ Features
+
+| Feature | Description |
+|--------|-------------|
+| 🎨 Dark theme | Black / gray base with white accents |
+| 🔘 Floating button | Circular logo button to open / close the UI |
+| 🔔 Notifications | Built-in `Library:Notify` |
+| 🔍 Search | Global + page search |
+| 📑 Tabs & sections | Left / right groupboxes |
+| ⚡ Rendering | Optional progressive load (`"true"` / `"false"`) |
+| 🧩 Full controls | Toggle, Button, Slider, Dropdown, Input, KeyBind, Label, Paragraph, Separator, LinkInvite |
+
+---
+
+## 📦 Installation
 
 ```lua
-local Library = loadstring(game:HttpGet("YOUR_RAW_UI_LIBRARY_URL"))()
+local Library = loadstring(game:HttpGet("YOUR_RAW_DarkUiLibraryV3_URL"))()
 ```
 
-Or load from a local file:
+Or local file:
 
 ```lua
-local Library = loadstring(readfile("Ui-Library.luau"))()
+local Library = loadstring(readfile("DarkUiLibraryV3.luau"))()
 ```
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ```lua
-local Library = loadstring(game:HttpGet("YOUR_RAW_UI_LIBRARY_URL"))()
+local Library = loadstring(game:HttpGet("YOUR_RAW_URL"))()
 
 local Window = Library:CreateWindow({
-    Title = "Black Hub",
-    Desc = "- Blox Fruits",
+    Title = "Dark Ui V3",
+    Desc = "- Example",
     Image = "rbxassetid://127598561744166",
-    Rendering = "true" -- "true" = progressive | "false" = instant
+    Rendering = "false"
 })
 
 local Tab = Window:AddTab("Main")
@@ -56,26 +58,23 @@ Section:AddToggle("MyToggle", {
 
 ---
 
-## CreateWindow
+## 🪟 CreateWindow
 
 | Option | Type | Description |
 |--------|------|-------------|
-| `Title` | string | Main hub title |
-| `Desc` | string | Subtitle next to the title |
-| `Image` | string | Logo asset (`rbxassetid://...`) used on the floating button and header |
-| `Rendering` | string / bool | `"true"` = load tabs/elements one by one (250ms). `"false"` = load everything instantly |
+| `Title` | string | Main title |
+| `Desc` | string | Subtitle |
+| `Image` | string | Logo (`rbxassetid://...`) |
+| `Rendering` | string / bool | `"true"` = delayed load · `"false"` = instant |
 
 ---
 
-## Tabs System
-
-Control which tabs appear using a simple table:
+## 📑 Tabs system
 
 ```lua
 local Tabs = {
-    TabCommunity = "true",
-    TabShop = "true",
-    TabMain = "false"  -- this tab will not be created
+    TabMain = "true",
+    TabShop = "false"
 }
 
 local function IsTab(name)
@@ -83,52 +82,52 @@ local function IsTab(name)
     return v == true or v == "true"
 end
 
-if IsTab("TabCommunity") then
-    local TabCommunity = Window:AddTab("Community")
-    -- ...
+if IsTab("TabMain") then
+    local Tab = Window:AddTab("Main")
 end
 ```
 
-- `"true"` / `true` → tab is created  
-- `"false"` / `false` → tab is skipped  
+✅ `"true"` → tab is created  
+❌ `"false"` → tab is skipped  
 
 ---
 
-## Controls
+## 🧩 Controls
 
-### AddTab
+### ➕ AddTab
 
 ```lua
 local Tab = Window:AddTab("Main")
 ```
 
-### AddLeftGroupbox / AddRightGroupbox / AddSection
+### 📦 AddLeftGroupbox / AddRightGroupbox / AddSection
 
 ```lua
 local Section = Tab:AddLeftGroupbox("General")
--- or
-local Section = Tab:AddRightGroupbox("Settings")
--- or
-local Section = Tab:AddSection("Name")
+local Section2 = Tab:AddRightGroupbox("Settings")
 ```
 
 ---
 
-### AddToggle
+### 🔘 AddToggle
 
 ```lua
-Section:AddToggle("ToggleId", {
+local Toggle = Section:AddToggle("ToggleId", {
     Title = "Option Name",
     Default = false,
     Callback = function(Value)
         print("Toggle:", Value)
     end
 })
+
+Toggle:Set(true)
+Toggle:SetValue(false)
+print(Toggle:Get())
 ```
 
 ---
 
-### AddButton
+### 🖱️ AddButton
 
 ```lua
 Section:AddButton({
@@ -141,10 +140,10 @@ Section:AddButton({
 
 ---
 
-### AddSlider
+### 📊 AddSlider
 
 ```lua
-Section:AddSlider({
+local Slider = Section:AddSlider({
     Title = "Value",
     Min = 100,
     Max = 1000,
@@ -154,77 +153,64 @@ Section:AddSlider({
         print("Slider:", Value)
     end
 })
-```
 
-| Option | Description |
-|--------|-------------|
-| `Min` | Minimum value |
-| `Max` | Maximum value |
-| `Default` | Starting value |
-| `Precise` | Use decimal values when `true` |
+Slider:Set(500)
+```
 
 ---
 
-### AddDropdown (Single)
+### 📋 AddDropdown (single)
 
 ```lua
-Section:AddDropdown("DropdownId", {
+Section:AddDropdown("Island", {
     Title = "Select Island",
-    Values = {"Island 1", "Island 2", "Island 3", "Island 4"},
+    Values = {"Island 1", "Island 2", "Island 3"},
     Default = "Island 1",
     Multi = false,
-    Search = false,
     Callback = function(Value)
-        print("Selected:", Value)
+        print(Value)
     end
 })
 ```
 
-### AddDropdown (Multi)
+### 📋 AddDropdown (multi)
 
 ```lua
-Section:AddDropdown("MultiId", {
+Section:AddDropdown("MultiIsland", {
     Title = "Select Island",
-    Values = {"Island 1", "Island 2", "Island 3", "Island 4"},
+    Values = {"Island 1", "Island 2", "Island 3"},
     Default = {"Island 1"},
     Multi = true,
     Callback = function(Value)
-        print("Selected list:", Value)
+        print(Value)
     end
 })
 ```
 
-| Option | Description |
-|--------|-------------|
-| `Values` | List of options |
-| `Default` | String (single) or table (multi) |
-| `Multi` | `true` = multi-select |
-| `Search` | `true` = searchable dropdown |
-
 ---
 
-### AddInput
+### ⌨️ AddInput
 
 ```lua
 Section:AddInput("InputId", {
-    Title = "Write the He wants",
+    Title = "Write something",
     Placeholder = "Type here...",
     Default = "",
     Callback = function(Text)
-        print("Input:", Text)
+        print(Text)
     end
 })
 ```
 
 ---
 
-### AddKeyBind
+### 🎹 AddKeyBind
 
 ```lua
 Section:AddKeyBind({
     Title = "Menu Key",
     Default = Enum.KeyCode.RightShift,
-    Mode = "Toggle", -- "Toggle" or "Hold"
+    Mode = "Toggle",
     Callback = function(Value)
         print("Keybind:", Value)
     end
@@ -233,7 +219,7 @@ Section:AddKeyBind({
 
 ---
 
-### AddLabel
+### 🏷️ AddLabel
 
 ```lua
 Section:AddLabel("Status: true")
@@ -241,16 +227,34 @@ Section:AddLabel("Status: true")
 
 ---
 
-### AddParagraph
+### 📝 AddParagraph
 
 ```lua
-Section:AddParagraph("Example")
-Section:AddParagraph("Example:", "Line 1\nLine 2\nLine 3")
+local Status = Section:AddParagraph("Mirage Island", "Status:❌")
+
+Status:SetDescription("Status:✅")
+Status:SetDesc("Status:❌")
+Status:SetTitle("Mirage Island")
+```
+
+Live example (toggles every 1s):
+
+```lua
+local Live = Section:AddParagraph("Server Event", "Status:✅")
+
+task.spawn(function()
+    local on = true
+    while true do
+        task.wait(1)
+        on = not on
+        Live:SetDescription(on and "Status:✅" or "Status:❌")
+    end
+end)
 ```
 
 ---
 
-### AddSeperator
+### ➖ AddSeperator
 
 ```lua
 Section:AddSeperator("Info")
@@ -258,37 +262,28 @@ Section:AddSeperator("Info")
 
 ---
 
-### AddLinkInvite
-
-Special control with banner, circular photo and a copy-link button.
+### 🔗 AddLinkInvite
 
 ```lua
 Section:AddLinkInvite({
     Title = "Discord Invite",
-    Banner = "100023306258643",      -- banner image id
-    Photo = "80861671332748",       -- circular photo id
+    Banner = "100023306258643",
+    Photo = "80861671332748",
     Link = "https://discord.gg/example",
-    Button = "Join Server",         -- button text (customizable)
+    Button = "Join Server",
     Callback = function(link)
-        print("Copied:", link)
+        print(link)
     end
 })
 ```
 
-| Option | Description |
-|--------|-------------|
-| `Banner` | Roblox image id for the banner |
-| `Photo` | Roblox image id for the circular avatar |
-| `Link` | Invite URL (copied on click) |
-| `Button` | Button label (e.g. `"Join Server"`, `"Click To Copy"`) |
-
 ---
 
-## Notifications
+## 🔔 Notifications
 
 ```lua
 Library:Notify({
-    Title = "Ready",
+    Title = "Dark Ui V3",
     Desc = "UI fully loaded!",
     Duration = 3
 })
@@ -296,51 +291,194 @@ Library:Notify({
 
 ---
 
-## Other Methods
+## 🛠️ Other methods
 
 ```lua
-Library:ToggleUI()   -- show / hide main UI
-Library:DestroyUI()  -- destroy all library GUIs
+Library:ToggleUI()
+Library:DestroyUI()
 ```
 
 Floating button (bottom-left) also toggles the UI and is draggable.
 
 ---
 
-## Full Example Structure
+## 📐 Full UI example structure
 
 ```text
-Window
-├── Tab: Community
-│   └── Section: Invite
-│       └── AddLinkInvite (banner + photo + copy button)
-│
-├── Tab: Shop
-│   └── Section: Buy
-│       ├── Buttons: Buy Sword, Buy Fight Styles, Buy Guns, Buy Fruits
-│       ├── Dropdown (single): Select Island
-│       └── Toggle: Teleport to Island
-│
-└── Tab: Main
-    └── Section: Teleport
-        ├── Dropdown (multi): Select Island
-        ├── Toggle: Teleport Island
-        ├── Seperator: Info
-        ├── Paragraphs
-        ├── Label: Status: true
-        ├── Slider: 100 – 1000
-        └── Input: Write the He wants
+Window (Dark Ui V3)
+├── 👥 Community
+│   └── Invite
+│       └── 🔗 AddLinkInvite
+├── 🛒 Shop
+│   └── Buy
+│       ├── 🖱️ Buy Sword / Fight Styles / Guns / Fruits
+│       ├── 📋 Select Island (single)
+│       └── 🔘 Teleport to Island
+├── 🏠 Main
+│   └── Teleport
+│       ├── 📋 Multi Island
+│       ├── 🔘 Teleport Island
+│       ├── ➖ Info
+│       ├── 📝 Paragraphs
+│       ├── 🏷️ Label
+│       ├── 📊 Slider
+│       ├── ⌨️ Input
+│       ├── 🔘 Feature toggles
+│       └── 🎹 KeyBind
+└── 📡 Status
+    └── Live Status
+        └── 📝 Paragraph (✅ / ❌ every 1s)
 ```
 
 ---
 
-## Theme
+## 🧪 Complete example (all controls)
 
-Default accent colors are white / light gray on a dark background.  
-Logo and title are set via `CreateWindow` (`Image`, `Title`, `Desc`).
+See file: **`Dark Ui V3 Example.luau`**
+
+```lua
+local Library = loadstring(game:HttpGet("YOUR_RAW_URL"))()
+
+local Window = Library:CreateWindow({
+    Title = "Dark Ui V3",
+    Desc = "- Example",
+    Image = "rbxassetid://127598561744166",
+    Rendering = "false"
+})
+
+local Tabs = {
+    TabCommunity = "true",
+    TabShop = "true",
+    TabMain = "true",
+    TabStatus = "true"
+}
+
+local function IsTab(name)
+    local v = Tabs[name]
+    return v == true or v == "true"
+end
+
+if IsTab("TabCommunity") then
+    local TabCommunity = Window:AddTab("Community")
+    local SecInvite = TabCommunity:AddLeftGroupbox("Invite")
+    SecInvite:AddLinkInvite({
+        Title = "Discord Invite",
+        Banner = "100023306258643",
+        Photo = "80861671332748",
+        Link = "https://discord.gg/example",
+        Button = "Join Server",
+        Callback = function(link)
+            print(link)
+        end
+    })
+end
+
+if IsTab("TabShop") then
+    local TabShop = Window:AddTab("Shop")
+    local SecShop = TabShop:AddLeftGroupbox("Buy")
+    SecShop:AddButton({ Title = "Buy Sword", Callback = function() end })
+    SecShop:AddButton({ Title = "Buy Fight Styles", Callback = function() end })
+    SecShop:AddButton({ Title = "Buy Guns", Callback = function() end })
+    SecShop:AddButton({ Title = "Buy Fruits", Callback = function() end })
+    local SelectedIsland = "Island 1"
+    SecShop:AddDropdown("SelectIsland", {
+        Title = "Select Island",
+        Values = {"Island 1", "Island 2", "Island 3", "Island 4"},
+        Default = "Island 1",
+        Multi = false,
+        Callback = function(Value) SelectedIsland = Value end
+    })
+    SecShop:AddToggle("TeleportIsland", {
+        Title = "Teleport to Island",
+        Default = false,
+        Callback = function(Value)
+            if Value then print(SelectedIsland) end
+        end
+    })
+end
+
+if IsTab("TabMain") then
+    local TabMain = Window:AddTab("Main")
+    local SecMain = TabMain:AddLeftGroupbox("Teleport")
+    SecMain:AddDropdown("MultiIsland", {
+        Title = "Select Island",
+        Values = {"Island 1", "Island 2", "Island 3", "Island 4"},
+        Default = {"Island 1"},
+        Multi = true,
+        Callback = function(Value) end
+    })
+    SecMain:AddToggle("TeleportMulti", {
+        Title = "Teleport Island",
+        Default = false,
+        Callback = function(Value) end
+    })
+    SecMain:AddSeperator("Info")
+    SecMain:AddParagraph("Example")
+    SecMain:AddParagraph("Example:", "Ex\nEx\nEx")
+    SecMain:AddLabel("Status: true")
+    SecMain:AddSlider({
+        Title = "Value",
+        Min = 100,
+        Max = 1000,
+        Default = 100,
+        Callback = function(Value) end
+    })
+    SecMain:AddInput("WriteInput", {
+        Title = "Write the He wants",
+        Placeholder = "Write the He wants",
+        Default = "",
+        Callback = function(Text) end
+    })
+    SecMain:AddToggle("FeatureA", {
+        Title = "Feature A",
+        Default = false,
+        Callback = function(Value) end
+    })
+    SecMain:AddToggle("FeatureB", {
+        Title = "Feature B",
+        Default = true,
+        Callback = function(Value) end
+    })
+    SecMain:AddKeyBind({
+        Title = "Menu Key",
+        Default = Enum.KeyCode.RightShift,
+        Callback = function() end
+    })
+end
+
+if IsTab("TabStatus") then
+    local TabStatus = Window:AddTab("Status")
+    local SecStatus = TabStatus:AddLeftGroupbox("Live Status")
+    local LiveStatus = SecStatus:AddParagraph("Server Event", "Status:✅")
+    task.spawn(function()
+        local on = true
+        while true do
+            task.wait(1)
+            on = not on
+            LiveStatus:SetDescription(on and "Status:✅" or "Status:❌")
+        end
+    end)
+end
+
+Library:Notify({
+    Title = "Dark Ui V3",
+    Desc = "UI fully loaded!",
+    Duration = 3
+})
+```
 
 ---
 
-## License
+## 📄 Files
 
-Use freely for your hubs and scripts. Credit appreciated but not required.
+| File | Description |
+|------|-------------|
+| `DarkUiLibraryV3.luau` / `Ui-Library.luau` | Full UI library |
+| `Dark Ui V3 Example.luau` | Complete example |
+| `README.md` | This documentation |
+
+---
+
+## 📜 License
+
+Free to use in your hubs and scripts. Credit appreciated but not required.
