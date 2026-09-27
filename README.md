@@ -1,4 +1,4 @@
-# 🌑 Dark Ui V3
+# 🕳️ Dark Ui V2.5 🕳️
 
 Modern Roblox UI library — dark theme, white accents, progressive optional loading, and Proxy-compatible controls (`:Set`, `:SetDescription`).
 
@@ -21,13 +21,13 @@ Modern Roblox UI library — dark theme, white accents, progressive optional loa
 ## 📦 Installation
 
 ```lua
-local Library = loadstring(game:HttpGet("YOUR_RAW_DarkUiLibraryV3_URL"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/XXBLACKXX-OFC/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
 ```
 
 Or local file:
 
 ```lua
-local Library = loadstring(readfile("DarkUiLibraryV3.luau"))()
+local Library = loadstring(readfile("DarkUiLibraryV2.5.luau"))()
 ```
 
 ---
@@ -35,10 +35,10 @@ local Library = loadstring(readfile("DarkUiLibraryV3.luau"))()
 ## 🚀 Quick Start
 
 ```lua
-local Library = loadstring(game:HttpGet("YOUR_RAW_URL"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/XXBLACKXX-OFC/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
 
 local Window = Library:CreateWindow({
-    Title = "Dark Ui V3",
+    Title = "Dark Ui V2.5",
     Desc = "- Example",
     Image = "rbxassetid://127598561744166",
     Rendering = "false"
@@ -283,7 +283,7 @@ Section:AddLinkInvite({
 
 ```lua
 Library:Notify({
-    Title = "Dark Ui V3",
+    Title = "Dark Ui V2.5",
     Desc = "UI fully loaded!",
     Duration = 3
 })
@@ -305,7 +305,7 @@ Floating button (bottom-left) also toggles the UI and is draggable.
 ## 📐 Full UI example structure
 
 ```text
-Window (Dark Ui V3)
+Window (Dark Ui V2.5)
 ├── 👥 Community
 │   └── Invite
 │       └── 🔗 AddLinkInvite
@@ -334,13 +334,13 @@ Window (Dark Ui V3)
 
 ## 🧪 Complete example (all controls)
 
-See file: **`Dark Ui V3 Example.luau`**
+See file: **`Dark Ui V2.5 Example.luau`**
 
 ```lua
-local Library = loadstring(game:HttpGet("YOUR_RAW_URL"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/XXBLACKXX-OFC/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
 
 local Window = Library:CreateWindow({
-    Title = "Dark Ui V3",
+    Title = "Dark Ui V2.5",
     Desc = "- Example",
     Image = "rbxassetid://127598561744166",
     Rendering = "false"
@@ -461,7 +461,7 @@ if IsTab("TabStatus") then
 end
 
 Library:Notify({
-    Title = "Dark Ui V3",
+    Title = "Dark Ui V2.5",
     Desc = "UI fully loaded!",
     Duration = 3
 })
@@ -473,8 +473,8 @@ Library:Notify({
 
 | File | Description |
 |------|-------------|
-| `DarkUiLibraryV3.luau` / `Ui-Library.luau` | Full UI library |
-| `Dark Ui V3 Example.luau` | Complete example |
+| `DarkUiLibraryV2.5.luau` / `Ui-Library.luau` | Full UI library |
+| `Dark Ui V2.5 Example.luau` | Complete example |
 | `README.md` | This documentation |
 
 ---
