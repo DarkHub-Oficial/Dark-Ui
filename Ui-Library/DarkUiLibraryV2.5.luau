@@ -11,37 +11,37 @@ getgenv().DarkLibraryV25 = true
 
 local DisableAnimation = game.Players.LocalPlayer.PlayerGui:FindFirstChild('TouchGui')
 local T1UIColor = {
-	["Border Color"] = Color3.fromRGB(255, 255, 255),
-	["Click Effect Color"] = Color3.fromRGB(230, 230, 230),
-	["Setting Icon Color"] = Color3.fromRGB(230, 230, 230),
+	["Border Color"] = Color3.fromRGB(125, 35, 80),
+	["Click Effect Color"] = Color3.fromRGB(155, 50, 100),
+	["Setting Icon Color"] = Color3.fromRGB(180, 70, 120),
 	["Logo Image"] = "rbxassetid://127598561744166",
-	["Search Icon Color"] = Color3.fromRGB(240, 240, 230),
-	["Search Icon Highlight Color"] = Color3.fromRGB(255, 255, 255),
-	["GUI Text Color"] = Color3.fromRGB(235, 235, 230),
-	["Text Color"] = Color3.fromRGB(235, 235, 230),
-	["Placeholder Text Color"] = Color3.fromRGB(170, 170, 160),
-	["Title Text Color"] = Color3.fromRGB(200, 200, 200),
-	["Background Main Color"] = Color3.fromRGB(18, 18, 22),
-	["Background 1 Color"] = Color3.fromRGB(28, 28, 34),
+	["Search Icon Color"] = Color3.fromRGB(180, 90, 130),
+	["Search Icon Highlight Color"] = Color3.fromRGB(200, 80, 140),
+	["GUI Text Color"] = Color3.fromRGB(235, 220, 230),
+	["Text Color"] = Color3.fromRGB(235, 220, 230),
+	["Placeholder Text Color"] = Color3.fromRGB(160, 130, 145),
+	["Title Text Color"] = Color3.fromRGB(200, 150, 180),
+	["Background Main Color"] = Color3.fromRGB(16, 12, 18),
+	["Background 1 Color"] = Color3.fromRGB(26, 18, 28),
 	["Background 1 Transparency"] = 0.1,
-	["Background 2 Color"] = Color3.fromRGB(38, 38, 46),
-	["Background 3 Color"] = Color3.fromRGB(48, 48, 56),
+	["Background 2 Color"] = Color3.fromRGB(36, 24, 38),
+	["Background 3 Color"] = Color3.fromRGB(46, 30, 48),
 	["Background Image"] = "",
-	["Page Selected Color"] = Color3.fromRGB(255, 255, 255),
-	["Section Text Color"] = Color3.fromRGB(220, 220, 210),
-	["Section Underline Color"] = Color3.fromRGB(255, 255, 255),
-	["Toggle Border Color"] = Color3.fromRGB(255, 255, 255),
-	["Toggle Checked Color"] = Color3.fromRGB(230, 230, 230),
-	["Toggle Desc Color"] = Color3.fromRGB(185, 185, 185),
-	["Button Color"] = Color3.fromRGB(255, 255, 255),
-	["Label Color"] = Color3.fromRGB(38, 38, 42),
-	["Dropdown Icon Color"] = Color3.fromRGB(230, 230, 230),
-	["Dropdown Selected Color"] = Color3.fromRGB(255, 255, 255),
-	["Dropdown Selected Check Color"] = Color3.fromRGB(255, 255, 255),
-	["Textbox Highlight Color"] = Color3.fromRGB(255, 255, 255),
-	["Box Highlight Color"] = Color3.fromRGB(255, 255, 255),
-	["Slider Line Color"] = Color3.fromRGB(255, 255, 255),
-	["Slider Highlight Color"] = Color3.fromRGB(220, 220, 220),
+	["Page Selected Color"] = Color3.fromRGB(140, 40, 90),
+	["Section Text Color"] = Color3.fromRGB(210, 180, 200),
+	["Section Underline Color"] = Color3.fromRGB(140, 40, 90),
+	["Toggle Border Color"] = Color3.fromRGB(140, 40, 90),
+	["Toggle Checked Color"] = Color3.fromRGB(160, 50, 105),
+	["Toggle Desc Color"] = Color3.fromRGB(175, 150, 165),
+	["Button Color"] = Color3.fromRGB(140, 40, 90),
+	["Label Color"] = Color3.fromRGB(36, 24, 38),
+	["Dropdown Icon Color"] = Color3.fromRGB(180, 70, 120),
+	["Dropdown Selected Color"] = Color3.fromRGB(140, 40, 90),
+	["Dropdown Selected Check Color"] = Color3.fromRGB(180, 70, 120),
+	["Textbox Highlight Color"] = Color3.fromRGB(140, 40, 90),
+	["Box Highlight Color"] = Color3.fromRGB(140, 40, 90),
+	["Slider Line Color"] = Color3.fromRGB(140, 40, 90),
+	["Slider Highlight Color"] = Color3.fromRGB(180, 70, 120),
 	["Tween Animation 1 Speed"] = DisableAnimation and 0 or 0.25,
 	["Tween Animation 2 Speed"] = DisableAnimation and 0 or 0.5,
 	["Tween Animation 3 Speed"] = DisableAnimation and 0 or 0.1,
@@ -296,7 +296,7 @@ local libCreateNoti = function(Setting)
 	local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
 	local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
 	local color = colorR .. ',' .. colorG .. ',' .. colorB
-    TextLabelNoti.Text = "<font color=\"rgb(" .. tostring(color or "200,200,200") .. ")\">" .. tostring("Dark Ui V2.5") .. "</font> " .. tostring(getgenv().TitleNameNoti or "")
+    TextLabelNoti.Text = tostring(getgenv().TitleNameNoti or "")
     
 	TextLabelNoti.Name = "TextLabelNoti"
 	TextLabelNoti.Parent = Topnoti
@@ -401,7 +401,7 @@ function Library:Notify(Setting, bypass)
 end
 
 function Library:CreateWindow(Setting)
-    local TitleNameMain = Setting.Title or "Dark Ui V2.5"
+    local TitleNameMain = Setting.Title or "Dark Ui"
     getgenv().MainDesc = Setting.Desc or Setting.Subtitle or ""
     local ren = Setting.Rendering
     if ren == nil then
@@ -476,7 +476,7 @@ function Library:CreateWindow(Setting)
 
 	local uigradient = Instance.new("UIGradient", MainContainer);
 	uigradient.Color = ColorSequence.new{
-		ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+		ColorSequenceKeypoint.new(0, Color3.fromRGB(140, 40, 90)),
 		ColorSequenceKeypoint.new(1, Color3.fromRGB(200, 200, 200))
 	}
 	uigradient.Rotation = 90
@@ -493,7 +493,7 @@ function Library:CreateWindow(Setting)
 
 	Concacontainer.Name = "Concacontainer"
 	Concacontainer.Parent = MainContainer
-	Concacontainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Concacontainer.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 	Concacontainer.BackgroundTransparency = 1.000
 	Concacontainer.ClipsDescendants = true
 	Concacontainer.Position = UDim2.new(0, 0, 0, 30)
@@ -501,14 +501,14 @@ function Library:CreateWindow(Setting)
 	
 	Concacmain.Name = "Concacmain"
 	Concacmain.Parent = Concacontainer
-	Concacmain.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Concacmain.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 	Concacmain.BackgroundTransparency = 1.000
 	Concacmain.Selectable = true
 	Concacmain.Size = UDim2.new(1, 0, 1, 0)
 	
 	TopMain.Name = "TopMain"
 	TopMain.Parent = MainContainer
-	TopMain.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TopMain.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 	TopMain.BackgroundTransparency = 1.000
 	TopMain.Size = UDim2.new(1, 0, 0, 25)
 	
@@ -522,7 +522,7 @@ function Library:CreateWindow(Setting)
 	
 	Ruafimg.Name = "Ruafimg"
 	Ruafimg.Parent = TopMain
-	Ruafimg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Ruafimg.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 	Ruafimg.BackgroundTransparency = 1.000
 	Ruafimg.Position = UDim2.new(0, 5, 0, 0)
 	Ruafimg.Size = UDim2.new(0, 25, 0, 25)
@@ -550,7 +550,7 @@ function Library:CreateWindow(Setting)
 	local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
 	local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
 	local color = colorR .. ',' .. colorG .. ',' .. colorB
-    TextLabelMain.Text = "<font color=\"rgb(" .. tostring(color or "200,200,200") .. ")\">" .. tostring(TitleNameMain or "Dark Ui V2.5") .. "</font> " .. tostring(getgenv().MainDesc or "")
+    TextLabelMain.Text = "<font color=\"rgb(" .. tostring(color or "200,200,200") .. ")\">" .. tostring(TitleNameMain or "Dark Ui") .. "</font> " .. tostring(getgenv().MainDesc or "")
 
 	PageControl.Name = "Background1"
 	PageControl.Parent = Concacmain
@@ -964,14 +964,14 @@ function Library:CreateWindow(Setting)
 
 		SearchFrame.Name = "SearchFrame"
 		SearchFrame.Parent = PageSearch
-		SearchFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		SearchFrame.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 		SearchFrame.BackgroundTransparency = 1.000
 		SearchFrame.Size = UDim2.new(0, 20, 0, 20)
 
 		SearchIcon.Name = "SearchIcon"
 		SearchIcon.Parent = SearchFrame
 		SearchIcon.AnchorPoint = Vector2.new(0.5, 0.5)
-		SearchIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		SearchIcon.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 		SearchIcon.BackgroundTransparency = 1.000
 		SearchIcon.Position = UDim2.new(0.5, 0, 0.5, 0)
 		SearchIcon.Size = UDim2.new(0, 16, 0, 16)
@@ -980,7 +980,7 @@ function Library:CreateWindow(Setting)
 
 		SearchButton.Name = "Search Button"
 		SearchButton.Parent = SearchFrame
-		SearchButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		SearchButton.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 		SearchButton.BackgroundTransparency = 1.000
 		SearchButton.Size = UDim2.new(1, 0, 1, 0)
 		SearchButton.Font = Enum.Font.SourceSans
@@ -990,7 +990,7 @@ function Library:CreateWindow(Setting)
 
 		SearchBox.Name = "Search Box"
 		SearchBox.Parent = PageSearch
-		SearchBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		SearchBox.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 		SearchBox.BackgroundTransparency = 1.000
 		SearchBox.Position = UDim2.new(0, 30, 0, 0)
 		SearchBox.Size = UDim2.new(1, -30, 1, 0)
@@ -1183,7 +1183,7 @@ function Library:CreateWindow(Setting)
 				VisibilityButton.Name = "VisibilityButton"
 				VisibilityButton.Parent = Topsec
 				VisibilityButton.AnchorPoint = Vector2.new(1, 0.5)
-				VisibilityButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				VisibilityButton.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 				VisibilityButton.BackgroundTransparency = 1.000
 				VisibilityButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				VisibilityButton.BorderSizePixel = 0
@@ -1310,7 +1310,7 @@ function Library:CreateWindow(Setting)
 				check.Name = "check"
 				check.Parent = checkbox
 				check.AnchorPoint = Vector2.new(0.5, 0.5)
-				check.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				check.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 				check.Position = UDim2.new(0.5, 0, 0.5, 0)
 				local cac = 5
 				if Desc then
@@ -1483,7 +1483,7 @@ function Library:CreateWindow(Setting)
              ClickArea_1.Name = "ClickArea"
              ClickArea_1.Parent = RowBG_1
              ClickArea_1.AnchorPoint = Vector2.new(1, 0.5)
-             ClickArea_1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+             ClickArea_1.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
              ClickArea_1.Position = UDim2.new(1, -8,0.5, 0)
              ClickArea_1.Size = UDim2.new(0, 94,0, 30)
              ClickArea_1.ClipsDescendants = true
@@ -1493,7 +1493,7 @@ function Library:CreateWindow(Setting)
              
              UIGradient_1.Parent = ClickArea_1
              UIGradient_1.Color = ColorSequence.new{
-                 ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), 
+                 ColorSequenceKeypoint.new(0, Color3.fromRGB(140, 40, 90)), 
                  ColorSequenceKeypoint.new(0.4, Color3.fromRGB(240, 240, 240)), 
                  ColorSequenceKeypoint.new(0.6, Color3.fromRGB(220, 220, 220)), 
                  ColorSequenceKeypoint.new(1, Color3.fromRGB(200, 200, 200))
@@ -1514,7 +1514,7 @@ function Library:CreateWindow(Setting)
              
              Frame_1.Parent = ClickArea_1
              Frame_1.AnchorPoint = Vector2.new(0.5, 0)
-             Frame_1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+             Frame_1.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
              Frame_1.BackgroundTransparency = 0.8
              Frame_1.Position = UDim2.new(0.5, 0,0, 2)
              Frame_1.Size = UDim2.new(1, -6,0, 10)
@@ -1559,7 +1559,7 @@ function Library:CreateWindow(Setting)
                     ripple.AnchorPoint = Vector2.new(0.5, 0.5)
                     ripple.Position = UDim2.new(0.5, 0, 0.5, 0)
                     ripple.Size = UDim2.new(0, 0, 0, 0)
-                    ripple.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    ripple.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
                     ripple.BackgroundTransparency = 0.6
                     ripple.ZIndex = 20
                     ripple.Parent = ClickArea_1
@@ -2510,7 +2510,7 @@ function Library:CreateWindow(Setting)
 							SampleItemBG.Name = "SampleItemBG"
 							SampleItemBG.Parent = SampleItem
 							SampleItemBG.AnchorPoint = Vector2.new(0.5, 0.5)
-							SampleItemBG.BackgroundColor3 = v and UIColor["Dropdown Selected Check Color"] or Color3.fromRGB(255, 255, 255)
+							SampleItemBG.BackgroundColor3 = v and UIColor["Dropdown Selected Check Color"] or Color3.fromRGB(140, 40, 90)
 							SampleItemBG.BackgroundTransparency = v and .5 or 1
 							SampleItemBG.BorderColor3 = Color3.fromRGB(27, 42, 53)
 							SampleItemBG.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -2520,14 +2520,14 @@ function Library:CreateWindow(Setting)
 							SampleItemBGCorner.Parent = SampleItemBG
 							SampleItemTitle.Name = "SampleItemTitle"
 							SampleItemTitle.Parent = SampleItemBG
-							SampleItemTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+							SampleItemTitle.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 							SampleItemTitle.BackgroundTransparency = 1.000
 							SampleItemTitle.BorderColor3 = Color3.fromRGB(27, 42, 53)
 							SampleItemTitle.Position = UDim2.new(0, 10, 0, 0)
 							SampleItemTitle.Size = UDim2.new(1, -40, 0, 25)
 							SampleItemTitle.Font = Enum.Font.GothamBlack
 							SampleItemTitle.Text = tostring(i)
-							SampleItemTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+							SampleItemTitle.TextColor3 = Color3.fromRGB(235, 220, 230)
 							SampleItemTitle.TextSize = 14.000
 							SampleItemTitle.TextStrokeTransparency = 0.500
 							SampleItemTitle.TextXAlignment = Enum.TextXAlignment.Left
@@ -2545,7 +2545,7 @@ function Library:CreateWindow(Setting)
 							SampleItemCheck.ImageTransparency = v and 0 or 1
 							SampleItemButton.Name = "SampleItemButton"
 							SampleItemButton.Parent = SampleItem
-							SampleItemButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+							SampleItemButton.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 							SampleItemButton.BackgroundTransparency = 1.000
 							SampleItemButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 							SampleItemButton.BorderSizePixel = 0
@@ -2561,7 +2561,7 @@ function Library:CreateWindow(Setting)
 								TweenService:Create(
 											SampleItemBG,
 											TweenInfo.new(getgenv().UIColor["Tween Animation 1 Speed"]), {
-									BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+									BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 								}
 										):Play()
 								TweenService:Create(
@@ -2578,7 +2578,7 @@ function Library:CreateWindow(Setting)
 								TweenService:Create(
 											SampleItemBG,
 											TweenInfo.new(getgenv().UIColor["Tween Animation 1 Speed"]), {
-									BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+									BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 								}
 										):Play()
 								TweenService:Create(
@@ -2599,7 +2599,7 @@ function Library:CreateWindow(Setting)
 								TweenService:Create(
 											SampleItemBG,
 											TweenInfo.new(getgenv().UIColor["Tween Animation 1 Speed"]), {
-									BackgroundColor3 = v and UIColor["Dropdown Selected Check Color"] or Color3.fromRGB(255, 255, 255)
+									BackgroundColor3 = v and UIColor["Dropdown Selected Check Color"] or Color3.fromRGB(140, 40, 90)
 								}
 										):Play()
 								TweenService:Create(
@@ -2875,7 +2875,7 @@ function Library:CreateWindow(Setting)
 								SampleItemBG.Name = "SampleItemBG"
 								SampleItemBG.Parent = SampleItem
 								SampleItemBG.AnchorPoint = Vector2.new(0.5, 0.5)
-								SampleItemBG.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+								SampleItemBG.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 								SampleItemBG.BackgroundTransparency = 1
 								SampleItemBG.BorderColor3 = Color3.fromRGB(27, 42, 53)
 								SampleItemBG.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -2885,14 +2885,14 @@ function Library:CreateWindow(Setting)
 								SampleItemBGCorner.Parent = SampleItemBG
 								SampleItemTitle.Name = "SampleItemTitle"
 								SampleItemTitle.Parent = SampleItemBG
-								SampleItemTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+								SampleItemTitle.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 								SampleItemTitle.BackgroundTransparency = 1.000
 								SampleItemTitle.BorderColor3 = Color3.fromRGB(27, 42, 53)
 								SampleItemTitle.Position = UDim2.new(0, 10, 0, 0)
 								SampleItemTitle.Size = UDim2.new(1, -40, 0, 25)
 								SampleItemTitle.Font = Enum.Font.GothamBlack
 								SampleItemTitle.Text = v
-								SampleItemTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+								SampleItemTitle.TextColor3 = Color3.fromRGB(235, 220, 230)
 								SampleItemTitle.TextSize = 14.000
 								SampleItemTitle.TextStrokeTransparency = 0.500
 								SampleItemTitle.TextXAlignment = Enum.TextXAlignment.Left
@@ -2910,7 +2910,7 @@ function Library:CreateWindow(Setting)
 								SampleItemCheck.ImageTransparency = 1
 								SampleItemButton.Name = "SampleItemButton"
 								SampleItemButton.Parent = SampleItem
-								SampleItemButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+								SampleItemButton.BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 								SampleItemButton.BackgroundTransparency = 1.000
 								SampleItemButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 								SampleItemButton.BorderSizePixel = 0
@@ -2926,7 +2926,7 @@ function Library:CreateWindow(Setting)
 									TweenService:Create(
 												SampleItemBG,
 												TweenInfo.new(getgenv().UIColor["Tween Animation 1 Speed"]), {
-										BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+										BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 									}
 											):Play()
 									TweenService:Create(
@@ -2943,7 +2943,7 @@ function Library:CreateWindow(Setting)
 									TweenService:Create(
 												SampleItemBG,
 												TweenInfo.new(getgenv().UIColor["Tween Animation 1 Speed"]), {
-										BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+										BackgroundColor3 = Color3.fromRGB(30, 18, 32)
 									}
 											):Play()
 									TweenService:Create(
