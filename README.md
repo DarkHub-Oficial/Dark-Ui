@@ -1,9 +1,11 @@
 # 🕳️ Dark Ui V2.5 🕳️
 
-# Modern Roblox UI library — dark theme, dark purple-red accents, progressive optional loading, and Proxy-compatible controls (`:Set`, `:SetDescription`).
+Modern Roblox UI library — dark theme, dark purple-red accents, progressive optional loading, and Proxy-compatible controls (`:Set`, `:SetDescription`).
+
 ---
-✨ Features
-```
+
+## ✨ Features
+
 | Feature            | Description                                                                               |
 | ------------------ | ----------------------------------------------------------------------------------------- |
 | 🎨 Dark theme      | Black / gray base with dark purple-red accents                                            |
@@ -13,19 +15,21 @@
 | 📑 Tabs & sections | Left / right groupboxes                                                                   |
 | ⚡ Rendering        | Optional progressive load (`"true"` / `"false"`)                                          |
 | 🧩 Full controls   | Toggle, Button, Slider, Dropdown, Input, KeyBind, Label, Paragraph, Separator, LinkInvite |
-```
+
 ---
-📦 Installation
-```lua
+
+## 📦 Installation
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkHub-Oficial/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
-```
+
 Or local file:
-```lua
+
 local Library = loadstring(readfile("DarkUiLibraryV2.5.luau"))()
-```
+
 ---
-🚀 Quick Start
-```lua
+
+## 🚀 Quick Start
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkHub-Oficial/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
 
 local Window = Library:CreateWindow({
@@ -45,20 +49,22 @@ Section:AddToggle("MyToggle", {
         print(Value)
     end
 })
-```
+
 ---
-🪟 CreateWindow
-```
+
+## 🪟 CreateWindow
+
 | Option      | Type          | Description                                   |
 | ----------- | ------------- | --------------------------------------------- |
 | `Title`     | string        | Main title                                    |
 | `Desc`      | string        | Subtitle                                      |
 | `Image`     | string        | Logo (`rbxassetid://...`)                     |
 | `Rendering` | string / bool | `"true"` = delayed load · `"false"` = instant |
-```
+
 ---
-📑 Tabs system
-```lua
+
+## 📑 Tabs system
+
 local Tabs = {
     TabMain = "true",
     TabShop = "false"
@@ -72,23 +78,27 @@ end
 if IsTab("TabMain") then
     local Tab = Window:AddTab("Main")
 end
-```
-✅ `"true"` → tab is created  
-❌ `"false"` → tab is skipped
+
+✅ "true" → tab is created  
+❌ "false" → tab is skipped
+
 ---
-🧩 Controls
-➕ AddTab
-```lua
+
+## 🧩 Controls
+
+### ➕ AddTab
+
 local Tab = Window:AddTab("Main")
-```
-📦 AddLeftGroupbox / AddRightGroupbox / AddSection
-```lua
+
+### 📦 AddLeftGroupbox / AddRightGroupbox / AddSection
+
 local Section = Tab:AddLeftGroupbox("General")
 local Section2 = Tab:AddRightGroupbox("Settings")
-```
+
 ---
-🔘 AddToggle
-```lua
+
+### 🔘 AddToggle
+
 local Toggle = Section:AddToggle("ToggleId", {
     Title = "Option Name",
     Default = false,
@@ -100,20 +110,22 @@ local Toggle = Section:AddToggle("ToggleId", {
 Toggle:Set(true)
 Toggle:SetValue(false)
 print(Toggle:Get())
-```
+
 ---
-🖱️ AddButton
-```lua
+
+### 🖱️ AddButton
+
 Section:AddButton({
     Title = "Click Me",
     Callback = function()
         print("Clicked")
     end
 })
-```
+
 ---
-📊 AddSlider
-```lua
+
+### 📊 AddSlider
+
 local Slider = Section:AddSlider({
     Title = "Value",
     Min = 100,
@@ -126,10 +138,11 @@ local Slider = Section:AddSlider({
 })
 
 Slider:Set(500)
-```
+
 ---
-📋 AddDropdown (single)
-```lua
+
+### 📋 AddDropdown (single)
+
 Section:AddDropdown("Island", {
     Title = "Select Island",
     Values = {"Island 1", "Island 2", "Island 3"},
@@ -139,9 +152,9 @@ Section:AddDropdown("Island", {
         print(Value)
     end
 })
-```
-📋 AddDropdown (multi)
-```lua
+
+### 📋 AddDropdown (multi)
+
 Section:AddDropdown("MultiIsland", {
     Title = "Select Island",
     Values = {"Island 1", "Island 2", "Island 3"},
@@ -151,10 +164,11 @@ Section:AddDropdown("MultiIsland", {
         print(Value)
     end
 })
-```
+
 ---
-⌨️ AddInput
-```lua
+
+### ⌨️ AddInput
+
 Section:AddInput("InputId", {
     Title = "Write something",
     Placeholder = "Type here...",
@@ -163,10 +177,11 @@ Section:AddInput("InputId", {
         print(Text)
     end
 })
-```
+
 ---
-🎹 AddKeyBind
-```lua
+
+### 🎹 AddKeyBind
+
 Section:AddKeyBind({
     Title = "Menu Key",
     Default = Enum.KeyCode.RightShift,
@@ -175,23 +190,25 @@ Section:AddKeyBind({
         print("Keybind:", Value)
     end
 })
-```
+
 ---
-🏷️ AddLabel
-```lua
+
+### 🏷️ AddLabel
+
 Section:AddLabel("Status: true")
-```
+
 ---
-📝 AddParagraph
-```lua
+
+### 📝 AddParagraph
+
 local Status = Section:AddParagraph("Mirage Island", "Status:❌")
 
 Status:SetDescription("Status:✅")
 Status:SetDesc("Status:❌")
 Status:SetTitle("Mirage Island")
-```
+
 Live example (toggles every 1s):
-```lua
+
 local Live = Section:AddParagraph("Server Event", "Status:✅")
 
 task.spawn(function()
@@ -202,15 +219,17 @@ task.spawn(function()
         Live:SetDescription(on and "Status:✅" or "Status:❌")
     end
 end)
-```
+
 ---
-➖ AddSeperator
-```lua
+
+### ➖ AddSeperator
+
 Section:AddSeperator("Info")
-```
+
 ---
-🔗 AddLinkInvite
-```lua
+
+### 🔗 AddLinkInvite
+
 Section:AddLinkInvite({
     Title = "Discord Invite",
     Banner = "100023306258643",
@@ -221,26 +240,30 @@ Section:AddLinkInvite({
         print(link)
     end
 })
-```
+
 ---
-🔔 Notifications
-```lua
+
+## 🔔 Notifications
+
 Library:Notify({
     Title = "Dark Ui V2.5",
     Desc = "UI fully loaded!",
     Duration = 3
 })
-```
+
 ---
-🛠️ Other methods
-```lua
+
+## 🛠️ Other methods
+
 Library:ToggleUI()
 Library:DestroyUI()
-```
+
 Floating button (bottom-left) also toggles the UI and is draggable.
+
 ---
-📐 Full UI example structure
-```text
+
+## 📐 Full UI example structure
+
 Window (Dark Ui V2.5)
 ├── 👥 Community
 │   └── Invite
@@ -264,11 +287,13 @@ Window (Dark Ui V2.5)
 └── 📡 Status
     └── Live Status
         └── 📝 Paragraph (✅ / ❌ every 1s)
-```
+
 ---
-🧪 Complete example (all controls)
-See file: `Dark Ui V2.5 Example.luau`
-```lua
+
+## 🧪 Complete example (all controls)
+
+See file: Dark Ui V2.5 Example.luau
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkHub-Oficial/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
 
 local Window = Library:CreateWindow({
@@ -397,16 +422,19 @@ Library:Notify({
     Desc = "UI fully loaded!",
     Duration = 3
 })
-```
+
 ---
-📄 Files
-```
+
+## 📄 Files
+
 | File                                         | Description        |
 | -------------------------------------------- | ------------------ |
 | `DarkUiLibraryV2.5.luau` / `Ui-Library.luau` | Full UI library    |
 | `Dark Ui V2.5 Example.luau`                  | Complete example   |
 | `README.md`                                  | This documentation |
-```
+
 ---
-📜 License
+
+## 📜 License
+
 Free to use in your hubs and scripts. Credit appreciated but not required.
