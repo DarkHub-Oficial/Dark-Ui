@@ -1,6 +1,6 @@
-🕳️ Dark Ui V2.5 🕳️
+# 🕳️ Dark Ui V2.5 🕳️
 
-Modern Roblox UI library — dark theme, dark purple-red accents, progressive optional loading, and Proxy-compatible controls (`:Set`, `:SetDescription`).
+# Modern Roblox UI library — dark theme, dark purple-red accents, progressive optional loading, and Proxy-compatible controls (`:Set`, `:SetDescription`).
 ---
 ✨ Features
 ```
