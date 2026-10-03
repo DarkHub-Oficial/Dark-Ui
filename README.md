@@ -1,41 +1,32 @@
-# 🕳️ Dark Ui V2.5 🕳️
+🕳️ Dark Ui V2.5 🕳️
 
-Modern Roblox UI library — dark theme, white accents, progressive optional loading, and Proxy-compatible controls (`:Set`, `:SetDescription`).
-
+Modern Roblox UI library — dark theme, dark purple-red accents, progressive optional loading, and Proxy-compatible controls (`:Set`, `:SetDescription`).
 ---
-
-## ✨ Features
-
-| Feature | Description |
-|--------|-------------|
-| 🎨 Dark theme | Black / gray base with white accents |
-| 🔘 Floating button | Circular logo button to open / close the UI |
-| 🔔 Notifications | Built-in `Library:Notify` |
-| 🔍 Search | Global + page search |
-| 📑 Tabs & sections | Left / right groupboxes |
-| ⚡ Rendering | Optional progressive load (`"true"` / `"false"`) |
-| 🧩 Full controls | Toggle, Button, Slider, Dropdown, Input, KeyBind, Label, Paragraph, Separator, LinkInvite |
-
----
-
-## 📦 Installation
-
-```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/XXBLACKXX-OFC/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
+✨ Features
 ```
-
+| Feature            | Description                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| 🎨 Dark theme      | Black / gray base with dark purple-red accents                                            |
+| 🔘 Floating button | Circular logo button to open / close the UI                                               |
+| 🔔 Notifications   | Built-in `Library:Notify`                                                                 |
+| 🔍 Search          | Global + page search                                                                      |
+| 📑 Tabs & sections | Left / right groupboxes                                                                   |
+| ⚡ Rendering        | Optional progressive load (`"true"` / `"false"`)                                          |
+| 🧩 Full controls   | Toggle, Button, Slider, Dropdown, Input, KeyBind, Label, Paragraph, Separator, LinkInvite |
+```
+---
+📦 Installation
+```lua
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkHub-Oficial/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
+```
 Or local file:
-
 ```lua
 local Library = loadstring(readfile("DarkUiLibraryV2.5.luau"))()
 ```
-
 ---
-
-## 🚀 Quick Start
-
+🚀 Quick Start
 ```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/XXBLACKXX-OFC/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkHub-Oficial/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
 
 local Window = Library:CreateWindow({
     Title = "Dark Ui V2.5",
@@ -55,22 +46,18 @@ Section:AddToggle("MyToggle", {
     end
 })
 ```
-
 ---
-
-## 🪟 CreateWindow
-
-| Option | Type | Description |
-|--------|------|-------------|
-| `Title` | string | Main title |
-| `Desc` | string | Subtitle |
-| `Image` | string | Logo (`rbxassetid://...`) |
+🪟 CreateWindow
+```
+| Option      | Type          | Description                                   |
+| ----------- | ------------- | --------------------------------------------- |
+| `Title`     | string        | Main title                                    |
+| `Desc`      | string        | Subtitle                                      |
+| `Image`     | string        | Logo (`rbxassetid://...`)                     |
 | `Rendering` | string / bool | `"true"` = delayed load · `"false"` = instant |
-
+```
 ---
-
-## 📑 Tabs system
-
+📑 Tabs system
 ```lua
 local Tabs = {
     TabMain = "true",
@@ -86,31 +73,21 @@ if IsTab("TabMain") then
     local Tab = Window:AddTab("Main")
 end
 ```
-
 ✅ `"true"` → tab is created  
-❌ `"false"` → tab is skipped  
-
+❌ `"false"` → tab is skipped
 ---
-
-## 🧩 Controls
-
-### ➕ AddTab
-
+🧩 Controls
+➕ AddTab
 ```lua
 local Tab = Window:AddTab("Main")
 ```
-
-### 📦 AddLeftGroupbox / AddRightGroupbox / AddSection
-
+📦 AddLeftGroupbox / AddRightGroupbox / AddSection
 ```lua
 local Section = Tab:AddLeftGroupbox("General")
 local Section2 = Tab:AddRightGroupbox("Settings")
 ```
-
 ---
-
-### 🔘 AddToggle
-
+🔘 AddToggle
 ```lua
 local Toggle = Section:AddToggle("ToggleId", {
     Title = "Option Name",
@@ -124,11 +101,8 @@ Toggle:Set(true)
 Toggle:SetValue(false)
 print(Toggle:Get())
 ```
-
 ---
-
-### 🖱️ AddButton
-
+🖱️ AddButton
 ```lua
 Section:AddButton({
     Title = "Click Me",
@@ -137,11 +111,8 @@ Section:AddButton({
     end
 })
 ```
-
 ---
-
-### 📊 AddSlider
-
+📊 AddSlider
 ```lua
 local Slider = Section:AddSlider({
     Title = "Value",
@@ -156,11 +127,8 @@ local Slider = Section:AddSlider({
 
 Slider:Set(500)
 ```
-
 ---
-
-### 📋 AddDropdown (single)
-
+📋 AddDropdown (single)
 ```lua
 Section:AddDropdown("Island", {
     Title = "Select Island",
@@ -172,9 +140,7 @@ Section:AddDropdown("Island", {
     end
 })
 ```
-
-### 📋 AddDropdown (multi)
-
+📋 AddDropdown (multi)
 ```lua
 Section:AddDropdown("MultiIsland", {
     Title = "Select Island",
@@ -186,11 +152,8 @@ Section:AddDropdown("MultiIsland", {
     end
 })
 ```
-
 ---
-
-### ⌨️ AddInput
-
+⌨️ AddInput
 ```lua
 Section:AddInput("InputId", {
     Title = "Write something",
@@ -201,11 +164,8 @@ Section:AddInput("InputId", {
     end
 })
 ```
-
 ---
-
-### 🎹 AddKeyBind
-
+🎹 AddKeyBind
 ```lua
 Section:AddKeyBind({
     Title = "Menu Key",
@@ -216,19 +176,13 @@ Section:AddKeyBind({
     end
 })
 ```
-
 ---
-
-### 🏷️ AddLabel
-
+🏷️ AddLabel
 ```lua
 Section:AddLabel("Status: true")
 ```
-
 ---
-
-### 📝 AddParagraph
-
+📝 AddParagraph
 ```lua
 local Status = Section:AddParagraph("Mirage Island", "Status:❌")
 
@@ -236,9 +190,7 @@ Status:SetDescription("Status:✅")
 Status:SetDesc("Status:❌")
 Status:SetTitle("Mirage Island")
 ```
-
 Live example (toggles every 1s):
-
 ```lua
 local Live = Section:AddParagraph("Server Event", "Status:✅")
 
@@ -251,19 +203,13 @@ task.spawn(function()
     end
 end)
 ```
-
 ---
-
-### ➖ AddSeperator
-
+➖ AddSeperator
 ```lua
 Section:AddSeperator("Info")
 ```
-
 ---
-
-### 🔗 AddLinkInvite
-
+🔗 AddLinkInvite
 ```lua
 Section:AddLinkInvite({
     Title = "Discord Invite",
@@ -276,11 +222,8 @@ Section:AddLinkInvite({
     end
 })
 ```
-
 ---
-
-## 🔔 Notifications
-
+🔔 Notifications
 ```lua
 Library:Notify({
     Title = "Dark Ui V2.5",
@@ -288,22 +231,15 @@ Library:Notify({
     Duration = 3
 })
 ```
-
 ---
-
-## 🛠️ Other methods
-
+🛠️ Other methods
 ```lua
 Library:ToggleUI()
 Library:DestroyUI()
 ```
-
 Floating button (bottom-left) also toggles the UI and is draggable.
-
 ---
-
-## 📐 Full UI example structure
-
+📐 Full UI example structure
 ```text
 Window (Dark Ui V2.5)
 ├── 👥 Community
@@ -329,15 +265,11 @@ Window (Dark Ui V2.5)
     └── Live Status
         └── 📝 Paragraph (✅ / ❌ every 1s)
 ```
-
 ---
-
-## 🧪 Complete example (all controls)
-
-See file: **`Dark Ui V2.5 Example.luau`**
-
+🧪 Complete example (all controls)
+See file: `Dark Ui V2.5 Example.luau`
 ```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/XXBLACKXX-OFC/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DarkHub-Oficial/Dark-Ui/refs/heads/main/Ui-Library/DarkUiLibraryV2.5.luau"))()
 
 local Window = Library:CreateWindow({
     Title = "Dark Ui V2.5",
@@ -466,19 +398,15 @@ Library:Notify({
     Duration = 3
 })
 ```
-
 ---
-
-## 📄 Files
-
-| File | Description |
-|------|-------------|
-| `DarkUiLibraryV2.5.luau` / `Ui-Library.luau` | Full UI library |
-| `Dark Ui V2.5 Example.luau` | Complete example |
-| `README.md` | This documentation |
-
+📄 Files
+```
+| File                                         | Description        |
+| -------------------------------------------- | ------------------ |
+| `DarkUiLibraryV2.5.luau` / `Ui-Library.luau` | Full UI library    |
+| `Dark Ui V2.5 Example.luau`                  | Complete example   |
+| `README.md`                                  | This documentation |
+```
 ---
-
-## 📜 License
-
+📜 License
 Free to use in your hubs and scripts. Credit appreciated but not required.
