@@ -148,6 +148,11 @@ local UICornerImgHide = Instance.new("UICorner")
 UICornerImgHide.Parent = imgHide
 UICornerImgHide.CornerRadius = UDim.new(1, 0)
 
+-- Expose floating button for CreateWindow customization
+Library_Function.MinimizeButton = btnHide
+Library_Function.MinimizeImage = imgHide
+Library_Function.MinimizeCorner = UICornerImgHide
+
 Library.ToggleUI = function()
 	getgenv().UIToggled = not getgenv().UIToggled
 	if game.CoreGui:FindFirstChild("Dark Library Ui V2.5") then
@@ -296,7 +301,7 @@ local libCreateNoti = function(Setting)
 	local colorG = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[2])
 	local colorB = tostring(Library_Function.Getcolor(getgenv().UIColor['Title Text Color'])[3])
 	local color = colorR .. ',' .. colorG .. ',' .. colorB
-    TextLabelNoti.Text = "<font color=\"rgb(" .. tostring(color or "200,200,200") .. ")\">" .. tostring("Dark Ui V2.5") .. "</font> " .. tostring(getgenv().TitleNameNoti or "")
+    TextLabelNoti.Text = tostring(getgenv().TitleNameNoti or "")
     
 	TextLabelNoti.Name = "TextLabelNoti"
 	TextLabelNoti.Parent = Topnoti
@@ -415,6 +420,31 @@ function Library:CreateWindow(Setting)
     
     if Setting.Image then
         getgenv().UIColor["Logo Image"] = Setting.Image
+    end
+
+    -- MinimizeButton customization (Shape + Image)
+    local MinBtn = Setting.MinimizeButton or Setting.Minimize or {}
+    if type(MinBtn) == "table" then
+        local shape = tostring(MinBtn.Shape or MinBtn.Forma or "Circle"):lower()
+        local photo = MinBtn.Image or MinBtn.Foto or MinBtn.Photo
+        if photo and photo ~= "" then
+            local imgId = tostring(photo)
+            if not imgId:find("rbxassetid://") then
+                imgId = "rbxassetid://" .. imgId
+            end
+            getgenv().UIColor["Logo Image"] = imgId
+            if Library_Function.MinimizeImage then
+                Library_Function.MinimizeImage.Image = imgId
+            end
+        end
+        if Library_Function.MinimizeCorner then
+            if shape == "square" or shape == "quadrado" then
+                Library_Function.MinimizeCorner.CornerRadius = UDim.new(0, 6)
+            else
+                -- Circle (default)
+                Library_Function.MinimizeCorner.CornerRadius = UDim.new(1, 0)
+            end
+        end
     end
     
 	local djtmemay = false
